@@ -1,5 +1,13 @@
+import Hero from "../components/Hero";
+import Features from "../components/Features";
+
 function Home() {
-  return <h1>Home</h1>
+  return (
+    <main>
+        <Hero />
+        <Features />
+    </main>
+  )
 }
 
 export default Home
