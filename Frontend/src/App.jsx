@@ -4,17 +4,25 @@ import Profile from "./pages/Profile";
 import SignIn from "./pages/SignIn";
 import Footer from "./components/layout/Footer";
 import Header from "./components/layout/Header";
+import ProtectedRoute from "./features/auth/ProtectedRoute";
 
 function App() {
   return (
     <BrowserRouter>
-    <Header />
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signin" element={<SignIn />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
-    <Footer />
+      <Footer />
     </BrowserRouter>
   )
 }
