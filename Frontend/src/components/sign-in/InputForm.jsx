@@ -11,7 +11,6 @@ function InputForm() {
     const [rememberMe, setRememberMe] = useState(false);
     const [error, setError] = useState("");
     const navigate = useNavigate();
-
     const dispatch = useDispatch();
 
     const handleSubmit = async (event) => {
@@ -38,9 +37,9 @@ function InputForm() {
             }
 
             dispatch(setCredentials({ token: data.body.token }));
-            navigate("/profile")
-
+            navigate("/profile");
             console.log("Token reçu :", data.body.token);
+            
         } catch (error) {
             setError("erreur de connexion au serveur");
             console.error(error);
@@ -62,11 +61,10 @@ function InputForm() {
                 <input type="checkbox" id="remember-me" checked={rememberMe} onChange={(event) => setRememberMe(event.target.checked)} />
                 <label htmlFor="remember-me">Remember me</label>
             </div>
-            {error && <p className="error-msg">{error}</p>}
+            {error && <p className="sign-in-content__error">{error}</p>}
             <button type="submit" className="sign-in-button">Sign In</button>
         </form>
     )
 }
 
 export default InputForm
-

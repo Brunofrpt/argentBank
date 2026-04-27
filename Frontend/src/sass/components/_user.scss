@@ -10,3 +10,27 @@
   color: #fff;
   margin-bottom: 2rem;
 }
+
+.edit-user-title {
+  color: #2c3e50;
+}
+
+.sign-in-content label {
+  color: #2c3e50;
+}
+
+.edit-user-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+
+  .edit-button {
+    flex: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .edit-user-actions {
+    flex-direction: column;
+  }
+}
