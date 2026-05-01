@@ -1,13 +1,13 @@
-import iconChat from "../../assets/images/icon-chat.png";
-import iconMoney from "../../assets/images/icon-money.png";
-import iconSecurity from "../../assets/images/icon-security.png";
+import iconChat from "../../assets/images/icon-chat.webp";
+import iconMoney from "../../assets/images/icon-money.webp";
+import iconSecurity from "../../assets/images/icon-security.webp";
 
 function Features() {
     return(
          <section className="features">
         <h2 className="sr-only">Features</h2>
         <div className="feature-item">
-          <img src={iconChat} alt="Chat Icon" className="feature-icon" />
+          <img src={iconChat} alt="Chat Icon" className="feature-icon" loading="lazy" width="100" height="100" />
           <h3 className="feature-item-title">You are our #1 priority</h3>
           <p>
             Need to talk to a representative? You can get in touch through our
@@ -17,8 +17,11 @@ function Features() {
         <div className="feature-item">
           <img
             src={iconMoney}
-            alt="Chat Icon"
+            alt="Money Icon"
             className="feature-icon"
+            loading="lazy"
+            width="100"
+            height="100"
           />
           <h3 className="feature-item-title">More savings means higher rates</h3>
           <p>
@@ -28,8 +31,11 @@ function Features() {
         <div className="feature-item">
           <img
             src={iconSecurity}
-            alt="Chat Icon"
+            alt="Security icon"
             className="feature-icon"
+            loading="lazy"
+            width="100"
+            height="100"
           />
           <h3 className="feature-item-title">Security you can trust</h3>
           <p>

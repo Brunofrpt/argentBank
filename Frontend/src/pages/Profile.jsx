@@ -25,8 +25,8 @@ function Profile() {
         }
 
         dispatch(setUser(data.body))
-      } catch (error) {
-        console.log(error)
+      } catch {
+        return;
       }
     }
     if (token) {

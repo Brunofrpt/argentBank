@@ -57,3 +57,16 @@
   margin-top: 1rem;
   margin-bottom: 0;
 }
+
+.sign-in-content__input {
+  box-sizing: border-box;
+
+  &--error {
+    border: 2px solid #c53030;
+
+    &:focus {
+      outline: 2px solid rgba(197, 48, 48, 0.25);
+      outline-offset: 1px;
+    }
+  }
+}

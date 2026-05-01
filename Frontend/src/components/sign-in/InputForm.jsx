@@ -36,13 +36,17 @@ function InputForm() {
                 return
             }
 
-            dispatch(setCredentials({ token: data.body.token }));
+            const token = data.body.token;
+
+            if (rememberMe) {
+                localStorage.setItem("token", token);
+            }
+
+            dispatch(setCredentials({ token }));
             navigate("/profile");
-            console.log("Token reçu :", data.body.token);
             
-        } catch (error) {
+        } catch {
             setError("erreur de connexion au serveur");
-            console.error(error);
         }
     };
 
@@ -51,11 +55,11 @@ function InputForm() {
         <form onSubmit={handleSubmit}>
             <div className="input-wrapper">
                 <label htmlFor="username">Username</label>
-                <input type="text" id="username" value={username} onChange={(event) => setUsername(event.target.value)} />
+                <input type="text" id="username" className={`sign-in-content__input${error ? " sign-in-content__input--error" : ""}`} value={username} onChange={(event) => setUsername(event.target.value)} />
             </div>
             <div className="input-wrapper">
                 <label htmlFor="password">Password</label>
-                <input type="password" id="password" value={password} onChange={(event) => setPassword(event.target.value)} />
+                <input type="password" id="password" className={`sign-in-content__input${error ? " sign-in-content__input--error" : ""}`} value={password} onChange={(event) => setPassword(event.target.value)} />
             </div>
             <div className="input-remember">
                 <input type="checkbox" id="remember-me" checked={rememberMe} onChange={(event) => setRememberMe(event.target.checked)} />

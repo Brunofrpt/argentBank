@@ -1,8 +1,8 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/images/argentBankLogo.png";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { logout } from "../../features/auth/authSlice";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { logout, setUser } from "../../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
 
 
@@ -13,7 +13,34 @@ function Header() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleSignout = async (event) => {
+  useEffect(() => {
+    if (!token || user) {
+      return;
+    }
+
+    const fetchProfile = async () => {
+      try {
+        const response = await fetch("http://localhost:3001/api/v1/user/profile", {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`
+          },
+        });
+        const data = await response.json();
+
+        if (!response.ok) {
+          return
+        }
+
+        dispatch(setUser(data.body));
+      } catch {
+        return;
+      }
+    }
+    fetchProfile();
+  }, [token, user, dispatch]);
+
+  const handleSignout = () => {
     dispatch(logout());
     navigate("/signin");
   }
